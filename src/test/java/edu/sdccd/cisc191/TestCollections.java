@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestCollections {
     @Test
@@ -69,7 +70,7 @@ public class TestCollections {
     @Test
     void testHashSet()
     {
-        HashSet<String> map = new HashSet<>();
+        HashSet<String> set = new HashSet<>();
 
         HashSetProducer producer = new HashSetProducer(set);
         HashSetConsumer consumer = new HashSetConsumer(set);
@@ -78,12 +79,12 @@ public class TestCollections {
         producer.produce(".c");
         producer.produce(".cpp");
 
-        assertEquals(3, map.size());
+        assertEquals(3, set.size());
         assertTrue(consumer.consume(".java"));
-        assertEquals(2, map.size());
+        assertEquals(2, set.size());
 
         producer.produce(".py");
         assertFalse(producer.produce(".py"));
-        assertEquals(3, map.size());
+        assertEquals(3, set.size());
     }
 }
